@@ -1,0 +1,22 @@
+<div class="micuenta-container">
+  <h3 class="micuenta-title">Datos personales</h3>
+  <hr class="micuenta-separator">
+  <h2 class="micuenta-nombre">{{ user?.nombre }} {{ user?.apellidos }}</h2>
+  <div class="micuenta-form">
+    <div class="micuenta-field">
+      <label for="nombre">Nombre</label>
+      <input id="nombre" type="text" [value]="user?.nombre" readonly>
+    </div>
+    <div class="micuenta-field">
+      <label for="correo">Correo electrónico</label>
+      <input id="correo" type="email" [value]="user?.email" readonly>
+    </div>
+    <div class="micuenta-field">
+      <label for="Tipo Lector">Tipo Lector</label>
+    </div>
+  </div>
+
+  <div class="perfil-opcion cerrar-sesion" (click)="logout()">
+    <i class="fa fa-sign-out"></i> Cerrar sesión
+  </div>
+</div>

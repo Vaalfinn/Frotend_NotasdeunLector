@@ -1,1 +1,240 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+/* Estilo general */
+body {
+  margin: 0;
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+  background-color: #f8f0ff;
+}
+
+/* Barra de navegación */
+nav {
+  background-color: #B13BFF;
+  /* Morado aesthetic */
+  padding: 2rem 1rem;
+  min-height: 70px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-sizing: border-box;
+}
+
+/* Lista de enlaces */
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+/* Estilo de enlaces */
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.10rem;
+  padding: 0.7rem 1.2rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+/* Hover y activa */
+nav ul li a:hover,
+nav ul li a.active {
+  background-color: white;
+  color: #6a0dad;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Submenú oculto por defecto */
+nav ul li ul.submenu {
+  display: none;
+  position: absolute;
+  background-color: #D9B3FF;
+  padding: 0.5rem 0;
+  border-radius: 8px;
+  margin-top: 0.5rem;
+  min-width: 160px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo de los elementos del submenú */
+nav ul li ul.submenu li {
+  display: block;
+  text-align: left;
+}
+
+/* Mostrar submenú al hacer hover en el padre */
+nav ul li:hover>ul.submenu {
+  display: block;
+}
+
+/* Estilo adicional para enlaces dentro del submenú */
+nav ul li ul.submenu li a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: white;
+  text-decoration: none;
+}
+
+/* Hover en submenú */
+nav ul li ul.submenu li a:hover {
+  background-color: white;
+  color: #6a0dad;
+}
+
+/* Para asegurar el posicionamiento */
+nav ul li {
+  position: relative;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+/*footer*/
+/* Estilos generales del footer */
+.site-footer {
+  background-color: #B13BFF;
+  color: #ecf0f1;
+  padding: 40px 0 20px;
+  font-family: 'Arial', sans-serif;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  padding: 0 20px;
+}
+
+/* Estilos para cada sección del footer */
+.footer-social,
+.footer-links,
+.footer-newsletter {
+  margin-bottom: 20px;
+}
+
+.footer-social h3,
+.footer-links h3,
+.footer-newsletter h3 {
+  color: #f8f0ff;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.footer-social h3::after,
+.footer-links h3::after,
+.footer-newsletter h3::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 50px;
+  height: 2px;
+  background-color: #8c6a4d;
+}
+
+/* Estilos para los iconos sociales */
+.social-icons {
+  display: flex;
+  gap: 15px;
+}
+
+.social-icon {
+  color: #ecf0f1;
+  background-color: #8c6a4d;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  background-color: #8c6a4d;
+  color: #2c3e50;
+  transform: translateY(-3px);
+}
+
+/* Estilos para los enlaces */
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  color: #bdc3c7;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #B13BFF;
+}
+
+/* Estilos para el newsletter */
+.newsletter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.newsletter-form input {
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+}
+
+.newsletter-form button {
+  background-color: #8c6a4d;
+  color: #f8f0ff;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.newsletter-form button:hover {
+  background-color: #D9B3FF;
+}
+
+/* Estilos para el pie de página inferior */
+.footer-bottom {
+  text-align: center;
+  padding-top: 20px;
+  margin-top: 30px;
+  border-top: 1px solid #8c6a4d;
+  color: #bdc3c7;
+  font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+  }
+}

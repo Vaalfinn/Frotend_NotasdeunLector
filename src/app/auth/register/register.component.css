@@ -1,0 +1,328 @@
+/* Contenedor principal del formulario de registro */
+.register-container {
+  max-width: 400px;
+  margin: 60px auto;
+  padding: 30px 25px;
+  background: white;
+  box-shadow: 0 8px 20px rgba(177, 59, 255, 0.15);
+  border-radius: 16px;
+  color: #333;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
+  z-index: 1;
+}
+
+/* Título del formulario */
+.register-container h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-weight: 700;
+  font-size: 2rem;
+  color: #B13BFF;
+  /* Color morado vibrante */
+}
+
+/* Espaciado entre cada grupo del formulario */
+.form-group {
+  margin-bottom: 20px;
+}
+
+/* Estilo de las etiquetas */
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Campos de entrada */
+input {
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 1rem;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  background-color: #fafafa;
+  color: #333;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Placeholder más tenue */
+input::placeholder {
+  color: #aaa;
+}
+
+/* Efecto al enfocar los campos */
+input:focus {
+  outline: none;
+  border-color: #B13BFF;
+  box-shadow: 0 0 6px 2px rgba(177, 59, 255, 0.3);
+}
+
+/* Estilo del select para el rol */
+/* Estilo del select para el rol */
+select {
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 1rem;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  background-color: #fafafa;
+  color: #333;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  appearance: none;
+  /* Quita estilo por defecto del navegador */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='10' viewBox='0 0 14 10'%3E%3Cpath fill='%23666' d='M1 1l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+}
+
+/* Placeholder de opción deshabilitada */
+select:invalid {
+  color: #aaa;
+}
+
+/* Efecto al enfocar el select */
+select:focus {
+  outline: none;
+  border-color: #B13BFF;
+  box-shadow: 0 0 6px 2px rgba(177, 59, 255, 0.3);
+}
+
+/* Ajusta la validación de error del select igual que los inputs */
+.form-group select.ng-invalid.ng-touched {
+  border-color: #d9534f;
+}
+
+
+/* Opciones internas */
+.custom-select select option {
+  background-color: white;
+  /* Fondo blanco por defecto */
+  color: #333;
+}
+
+/* Cuando una opción está seleccionada */
+.custom-select select option:checked {
+  background-color: #b13bff !important;
+  /* Morado */
+  color: white;
+}
+
+
+
+/* Cuadro de validación para errores por campo */
+.form-group div {
+  margin-top: 6px;
+  font-size: 0.85rem;
+  color: #d9534f;
+  background-color: #f8d7da;
+  padding: 5px 10px;
+  border-radius: 6px;
+  border: 1px solid #f5c6cb;
+}
+
+/* Mensaje de error general */
+.error-message {
+  background-color: #f8d7da;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 600;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+/* Botón de registro */
+button {
+  width: 100%;
+  padding: 14px 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: white;
+  background: linear-gradient(90deg, #EA8FFA, #B13BFF);
+  /* Mismo degradado que login */
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(177, 59, 255, 0.3);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efecto hover del botón */
+button:hover:not(:disabled) {
+  background: linear-gradient(90deg, #B13BFF, #EA8FFA);
+  /* Inverso al hover */
+  box-shadow: 0 6px 16px rgba(177, 59, 255, 0.4);
+}
+
+/* Botón deshabilitado */
+button:disabled {
+  background-color: #cccccc;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+/* Texto inferior con link para iniciar sesión */
+.login-link {
+  text-align: center;
+  margin-top: 25px;
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Estilo del link de login */
+.login-link a {
+  color: #B13BFF;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+/* Hover del link */
+.login-link a:hover {
+  color: #6a0dad;
+}
+
+/* Fondo lila suave */
+body {
+  background: #D08AFF;
+  /* Lila muy claro */
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Estilo de las burbujas */
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(177, 59, 255, 0.15);
+  /* Lila translúcido */
+  animation: float 20s infinite ease-in-out;
+  z-index: 0;
+}
+
+.bubble:nth-child(1) {
+  width: 80px;
+  height: 80px;
+  top: 10%;
+  left: 5%;
+  animation-delay: 0s;
+}
+
+.bubble:nth-child(2) {
+  width: 120px;
+  height: 120px;
+  top: 50%;
+  left: 80%;
+  animation-delay: 3s;
+}
+
+.bubble:nth-child(3) {
+  width: 100px;
+  height: 100px;
+  top: 80%;
+  left: 20%;
+  animation-delay: 6s;
+}
+
+.bubble:nth-child(4) {
+  width: 60px;
+  height: 60px;
+  top: 30%;
+  left: 60%;
+  animation-delay: 9s;
+}
+
+.bubble:nth-child(5) {
+  width: 90px;
+  height: 90px;
+  top: 70%;
+  left: 40%;
+  animation-delay: 12s;
+}
+
+.bubble:nth-child(6) {
+  width: 50px;
+  height: 50px;
+  top: 15%;
+  left: 85%;
+  animation-delay: 15s;
+}
+
+.bubble:nth-child(7) {
+  width: 140px;
+  height: 140px;
+  top: 40%;
+  left: 25%;
+  animation-delay: 18s;
+}
+
+.bubble:nth-child(8) {
+  width: 75px;
+  height: 75px;
+  top: 65%;
+  left: 70%;
+  animation-delay: 21s;
+}
+
+.bubble:nth-child(9) {
+  width: 110px;
+  height: 110px;
+  top: 85%;
+  left: 55%;
+  animation-delay: 24s;
+}
+
+.password-checklist {
+  margin: 10px 0 0;
+  padding-left: 20px;
+  font-size: 0.9rem;
+  color: #999;
+  list-style: none;
+}
+
+.password-checklist li::before {
+  content: '✖';
+  margin-right: 8px;
+  color: #d9534f;
+}
+
+.password-checklist li.valid {
+  color: #B13BFF;
+  font-weight: 600;
+}
+
+.password-checklist li.valid::before {
+  content: '✔';
+  color: #28a745;
+}
+
+.password-wrapper {
+  position: relative;
+}
+
+.password-wrapper input {
+  width: 100%;
+  padding-right: 30px;
+}
+
+.password-wrapper i.fa {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #666;
+}

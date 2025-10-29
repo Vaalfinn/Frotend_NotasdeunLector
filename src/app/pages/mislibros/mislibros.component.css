@@ -1,0 +1,158 @@
+/* Estilos generales */
+.mislibros-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    color: #D08AFF;
+}
+
+.titulo-seccion {
+    text-align: center;
+    color: #804D23;
+    margin-bottom: 30px;
+    font-size: 2.2rem;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+/* Estilos para la sección de comentarios */
+.comentarios-section {
+    margin-top: 50px;
+}
+
+.titulo-comentarios {
+    color: #804D23;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+}
+
+.comentarios-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.comentario-card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.usuario-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.usuario-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.usuario-nombre {
+    font-weight: bold;
+    color: #B13BFF;
+}
+
+.comentario-texto {
+    line-height: 1.6;
+    color: #555;
+    font-size: 1rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .libro-container {
+        flex-direction: column;
+    }
+
+    .portada-container {
+        flex: 1;
+        margin-bottom: 20px;
+    }
+}
+
+/* Estilos para el formulario de comentarios */
+.agregar-comentario {
+    background: #f5f5f5;
+    padding: 25px;
+    border-radius: 8px;
+    margin-bottom: 40px;
+    box-shadow: 0 2px 5px rgb(177, 59, 255);
+}
+
+.comentario-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.btn-enviar {
+    background-color: #B13BFF;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    align-self: flex-start;
+    transition: background-color 0.3s;
+}
+
+.btn-enviar:hover {
+    background-color: #804D23;
+}
+
+/* Estilos para el rating */
+.rating {
+    display: flex;
+    gap: 5px;
+    font-size: 1.5rem;
+}
+
+.rating span {
+    color: #ccc;
+    cursor: pointer;
+}
+
+.rating span.active {
+    color: #f1c40f;
+}
+
+/* Estilos adicionales para comentarios */
+.fecha {
+    color: #7f8c8d;
+    display: block;
+    margin-top: 10px;
+    font-size: 0.8rem;
+}

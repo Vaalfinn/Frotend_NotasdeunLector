@@ -1,0 +1,65 @@
+<!-- Barra de navegación -->
+<div class="catalog-container">
+    <!-- Barra de búsqueda de libros mejorada -->
+    <div class="search-section">
+        <div class="search-container">
+            <input type="text" placeholder="Busca tu próxima aventura..." class="search-input">
+            <button class="search-button">
+                <i class="fas fa-search"></i>
+                <span class="search-text">Buscar</span>
+            </button>
+        </div>
+    </div>
+</div>
+<!-- Después de tu barra de búsqueda -->
+<div class="genre-filters-container">
+    <div class="genre-filters">
+        <h3 class="filter-title">Explora por género:</h3>
+        <div class="filter-buttons">
+            <button class="filter-btn" [class.active]="selectedGenre === 'all'" (click)="filterByGenre('all')">
+                <i class="fas fa-star"></i> Todos
+            </button>
+            <button class="filter-btn" [class.active]="selectedGenre === 'fantasia'"
+                (click)="filterByGenre('fantasia')">
+                <i class="fas fa-dragon"></i> Fantasía
+            </button>
+            <button class="filter-btn" [class.active]="selectedGenre === 'romance'" (click)="filterByGenre('romance')">
+                <i class="fas fa-heart"></i> Romance
+            </button>
+            <button class="filter-btn" [class.active]="selectedGenre === 'thriller'"
+                (click)="filterByGenre('thriller')">
+                <i class="fas fa-mask"></i> Thriller
+            </button>
+            <button class="filter-btn" [class.active]="selectedGenre === 'ciencia-ficcion'"
+                (click)="filterByGenre('ciencia-ficcion')">
+                <i class="fas fa-rocket"></i> Ciencia Ficción
+            </button>
+            <button class="filter-btn" [class.active]="selectedGenre === 'clasicos'"
+                (click)="filterByGenre('clasicos')">
+                <i class="fas fa-book-open"></i> Clásicos
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Sección donde muestras los libros -->
+<!-- novedades.component.html -->
+<div class="books-container">
+    <div *ngFor="let book of filteredBooks" class="book-card">
+        <div class="main-cover">
+            <img [src]="book.image" [alt]="'Portada de ' + book.title" (error)="handleImageError(book)"
+                class="book-cover">
+        </div>
+
+        <div class="alternative-covers" *ngIf="book.alternativeImages?.length">
+            <img *ngFor="let altImg of book.alternativeImages" [src]="altImg" [alt]="'Otra portada de ' + book.title"
+                class="alt-cover">
+        </div>
+
+        <div class="book-info">
+            <h4>{{ book.title }}</h4>
+            <p>{{ book.author }}</p>
+            <span class="rating">⭐ {{ book.rating }}</span>
+        </div>
+    </div>
+</div>

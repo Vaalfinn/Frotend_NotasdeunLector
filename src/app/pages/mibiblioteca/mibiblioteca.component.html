@@ -1,0 +1,92 @@
+<div class="biblioteca-container">
+    <header class="biblioteca-header">
+        <h1>Mi Biblioteca Personal</h1>
+        <p>Organiza tus lecturas, comentarios y libros favoritos</p>
+    </header>
+
+    <div class="biblioteca-content">
+        <!-- Sección de agregar comentarios/notas -->
+        <div class="comentario-section">
+            <h2><i class="fas fa-edit"></i> Agregar Comentario/Nota</h2>
+            <div class="comentario-form">
+                <div class="form-group">
+                    <label for="libro-select">Selecciona un libro:</label>
+                    <select id="libro-select" [(ngModel)]="libroSeleccionado" required>
+                        <option value="">-- Selecciona un libro --</option>
+                        <option *ngFor="let libro of misLibros" [value]="libro.id">{{libro.titulo}}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="comentario">Tu comentario/nota:</label>
+                    <textarea id="comentario" [(ngModel)]="nuevoComentario"
+                        placeholder="Escribe tus impresiones sobre el libro..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Calificación:</label>
+                    <div class="rating-stars">
+                        <span *ngFor="let star of [1,2,3,4,5]" (click)="calificacion = star"
+                            [class.active]="star <= calificacion">★</span>
+                    </div>
+                </div>
+
+                <div class="form-group checkbox">
+                    <input type="checkbox" id="es-nota" [(ngModel)]="esNotaPrivada">
+                    <label for="es-nota">Favorito del mes</label>
+                </div>
+
+                <button (click)="agregarComentario()" class="btn-guardar">
+                    {{ esNotaPrivada ? 'Guardar Nota' : 'Guardar Comentario' }}
+                </button>
+            </div>
+        </div>
+
+        <!-- Resto de tu HTML... -->
+        <!-- Sección de comentarios de otros usuarios -->
+        <section class="comentarios-otros-section">
+            <h2><i class="fas fa-comments"></i> Comentarios de la Comunidad</h2>
+
+            <div class="filtros">
+                <input type="text" placeholder="Buscar por título o autor..." [(ngModel)]="filtroBusqueda">
+                <select [(ngModel)]="filtroCalificacion">
+                    <option value="0">Todas las calificaciones</option>
+                    <option *ngFor="let i of [1,2,3,4,5]" [value]="i">{{i}} estrella(s)</option>
+                </select>
+            </div>
+
+            <div class="comentarios-list">
+                <div *ngFor="let comentario of comentariosFiltrados" class="comentario-card">
+                    <div class="comentario-header">
+                        <h3>{{comentario.libroTitulo}}</h3>
+                        <span class="rating">{{comentario.calificacion}} ★</span>
+                    </div>
+                    <p class="comentario-texto">{{comentario.texto}}</p>
+                    <div class="comentario-footer">
+                        <span class="usuario">{{comentario.usuarioNombre}}</span>
+                        <span class="fecha">{{comentario.fecha | date:'mediumDate'}}</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de favoritos -->
+        <section class="favoritos-section">
+            <h2><i class="fas fa-heart"></i> Mis Libros Favoritos del Mes</h2>
+
+            <div class="favoritos-grid">
+                <div *ngFor="let libro of librosFavoritos" class="libro-card">
+                    <img [src]="libro.portada" [alt]="libro.titulo" class="portada">
+                    <div class="libro-info">
+                        <h3>{{libro.titulo}}</h3>
+                        <p class="autor">{{libro.autor}}</p>
+                        <div class="acciones">
+                            <button (click)="verDetalles(libro.id)" class="btn-detalles">Ver detalles</button>
+                            <button (click)="quitarFavorito(libro.id)" class="btn-quitar">Quitar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

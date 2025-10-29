@@ -1,0 +1,53 @@
+<div class="mislibros-container">
+    <h1 class="titulo-seccion">Mis Libros Favoritos</h1>
+
+
+
+
+    <!-- Sección para agregar comentarios -->
+    <div class="agregar-comentario">
+        <h2 class="titulo-comentarios">Deja tu recomendación</h2>
+        <form (ngSubmit)="agregarComentario()" class="comentario-form">
+            <div class="form-group">
+                <label for="nombre">Tu nombre:</label>
+                <input type="text" id="nombre" [(ngModel)]="nuevoComentario.nombre" name="nombre" required>
+            </div>
+
+            <div class="form-group">
+                <label for="comentario">Tu recomendación:</label>
+                <textarea id="comentario" [(ngModel)]="nuevoComentario.texto" name="comentario" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="valoracion">Valoración:</label>
+                <div class="rating">
+                    <span *ngFor="let star of [1,2,3,4,5]" (click)="nuevoComentario.valoracion = star"
+                        [class.active]="star <= nuevoComentario.valoracion">★</span>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-enviar">Enviar Comentario</button>
+        </form>
+    </div>
+
+    <!-- Sección de comentarios existentes -->
+    <div class="comentarios-section">
+        <h2 class="titulo-comentarios">¿Por qué recomiendan este libro?</h2>
+
+        <div class="comentarios-list">
+            <div *ngFor="let comentario of comentarios" class="comentario-card">
+                <div class="usuario-info">
+
+                    <div>
+                        <span class="usuario-nombre">{{comentario.nombre}}</span>
+                        <div class="rating">
+                            <span *ngFor="let star of [1,2,3,4,5]"
+                                [class.active]="star <= comentario.valoracion">★</span>
+                        </div>
+                    </div>
+                </div>
+                <p class="comentario-texto">{{comentario.texto}}</p>
+                <small class="fecha">{{comentario.fecha | date:'mediumDate'}}</small>
+            </div>
+        </div>
+    </div>

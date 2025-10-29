@@ -1,0 +1,302 @@
+/* Contenedor principal del formulario de login */
+.login-container {
+  position: relative;
+  z-index: 1;
+  max-width: 400px;
+  /* Ancho máximo para que no sea muy ancho en pantallas grandes */
+  margin: 60px auto;
+  /* Centra vertical y horizontalmente, con espacio arriba */
+  padding: 30px 25px;
+  /* Espacio interno para que no pegue el contenido a los bordes */
+  background: #fefefe;
+  /* Fondo blanco muy claro */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+  /* Sombra suave alrededor para dar profundidad */
+  border-radius: 12px;
+  /* Bordes redondeados para suavizar */
+  color: #B13BFF;
+  /* Color base del texto, gris oscuro */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* Fuente legible y moderna */
+}
+
+/* Centrar solo el título del formulario (por ejemplo: "Iniciar Sesión") */
+.login-container h2 {
+  text-align: center;
+  /* Centra horizontalmente el texto */
+  margin-bottom: 25px;
+  /* Espacio inferior para separarlo del siguiente elemento */
+  font-size: 1.5rem;
+  /* Tamaño más grande para destacar */
+  font-weight: 700;
+  /* Negrita para que resalte */
+  color: #B13BFF;
+  /* Color llamativo, en línea con la paleta */
+}
+
+
+/* Espacio inferior entre grupos de formulario (label + input) */
+.form-group {
+  margin-bottom: 20px;
+}
+
+/* Estilo de las etiquetas (labels) */
+label {
+  display: block;
+  /* Que ocupe toda la línea */
+  margin-bottom: 8px;
+  /* Separación debajo de la etiqueta */
+  font-weight: 600;
+  /* Negrita moderada */
+  font-size: 1rem;
+  /* Tamaño de fuente estándar */
+  color: #555;
+  /* Gris medio para el texto de la etiqueta */
+}
+
+/* Estilo de los inputs */
+input {
+  width: 100%;
+  /* Que ocupe todo el ancho disponible */
+  padding: 12px 15px;
+  /* Espacio interno cómodo para escribir */
+  font-size: 1rem;
+  /* Tamaño de letra legible */
+  border: 1.8px solid #ccc;
+  /* Borde gris claro, un poco más grueso */
+  border-radius: 10px;
+  /* Bordes redondeados suaves */
+  background-color: #fff;
+  /* Fondo blanco para inputs */
+  color: #333;
+  /* Texto oscuro para buena lectura */
+  box-sizing: border-box;
+  /* Incluye padding y borde en el ancho total */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  /* Transición suave al enfocar */
+}
+
+/* Color del placeholder dentro de los inputs */
+input::placeholder {
+  color: #aaa;
+  /* Gris claro para el texto de sugerencia */
+}
+
+/* Estilo cuando el input está enfocado (clic o tab) */
+input:focus {
+  outline: none;
+  /* Quitar borde por defecto */
+  border-color: #B13BFF;
+  /* Cambiar borde a azul suave */
+  box-shadow: 0 0 6px 2px rgba(177, 59, 255);
+  /* Sombra azul suave alrededor */
+}
+
+/* Mensajes de error visibles */
+.error-message {
+  background-color: #f8d7da;
+  /* Fondo rosa pálido para alerta */
+  padding: 10px;
+  /* Espacio interno */
+  border-radius: 8px;
+  /* Bordes redondeados */
+  font-size: 0.95rem;
+  /* Tamaño un poco más pequeño */
+  text-align: center;
+  /* Centrar texto */
+  margin-bottom: 20px;
+  /* Separación con contenido debajo */
+  font-weight: 600;
+  /* Negrita para resaltar */
+  color: #B13BFF;
+  /* Texto rojo oscuro */
+  border: 1px solid #f5c6cb;
+  /* Borde rosa para delimitar */
+}
+
+/* Estilo del botón principal */
+button {
+  width: 100%;
+  /* Ancho total */
+  padding: 14px 0;
+  /* Alto cómodo y sin padding horizontal */
+  font-size: 1.1rem;
+  /* Texto más grande para visibilidad */
+  font-weight: 700;
+  /* Texto en negrita */
+  color: white;
+  /* Texto blanco */
+  background: linear-gradient(90deg, #EA8FFA, #B13BFF);
+  /* Degradado azul suave */
+  border: none;
+  /* Sin borde */
+  border-radius: 14px;
+  /* Bordes redondeados */
+  cursor: pointer;
+  /* Manito al pasar */
+  box-shadow: 0 4px 10px rgba(177, 59, 255);
+  /* Sombra azul sutil */
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  /* Transición suave para hover */
+}
+
+/* Efecto hover en botón cuando está habilitado */
+button:hover:not(:disabled) {
+  background: linear-gradient(90deg, #EA8FFA, #B13BFF);
+  /* Degradado invertido */
+  box-shadow: 0 6px 14px rgb(177, 59, 255);
+  /* Sombra más intensa */
+}
+
+/* Estilo cuando el botón está deshabilitado */
+button:disabled {
+  background-color: #cccccc;
+  /* Gris claro */
+  box-shadow: none;
+  /* Sin sombra */
+  cursor: not-allowed;
+  /* Cursor de prohibido */
+}
+
+/* Contenedor para el link de registro debajo del formulario */
+.register-link {
+  text-align: center;
+  /* Centrar texto */
+  margin-top: 25px;
+  /* Espacio arriba */
+  font-size: 1rem;
+  /* Tamaño de fuente estándar */
+  color: #555;
+  /* Color gris para texto */
+}
+
+/* Estilo del enlace dentro de register-link */
+.register-link a {
+  color: #D627F5;
+  /* Azul suave */
+  font-weight: 600;
+  /* Negrita media */
+  text-decoration: none;
+  /* Sin subrayado */
+  cursor: pointer;
+  /* Manito */
+  transition: color 0.3s ease;
+  /* Transición para cambio de color */
+}
+
+/* Hover en el enlace */
+.register-link a:hover {
+  color: #D627F5;
+  /* Azul más intenso */
+}
+
+/* Fondo lila suave */
+body {
+  background: #D08AFF;
+  /* Lila muy claro */
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Estilo de las burbujas */
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(177, 59, 255, 0.15);
+  /* Lila translúcido */
+  animation: float 20s infinite ease-in-out;
+  z-index: 0;
+}
+
+.bubble:nth-child(1) {
+  width: 80px;
+  height: 80px;
+  top: 10%;
+  left: 5%;
+  animation-delay: 0s;
+}
+
+.bubble:nth-child(2) {
+  width: 120px;
+  height: 120px;
+  top: 50%;
+  left: 80%;
+  animation-delay: 3s;
+}
+
+.bubble:nth-child(3) {
+  width: 100px;
+  height: 100px;
+  top: 80%;
+  left: 20%;
+  animation-delay: 6s;
+}
+
+.bubble:nth-child(4) {
+  width: 60px;
+  height: 60px;
+  top: 30%;
+  left: 60%;
+  animation-delay: 9s;
+}
+
+.bubble:nth-child(5) {
+  width: 90px;
+  height: 90px;
+  top: 70%;
+  left: 40%;
+  animation-delay: 12s;
+}
+
+.bubble:nth-child(6) {
+  width: 50px;
+  height: 50px;
+  top: 15%;
+  left: 85%;
+  animation-delay: 15s;
+}
+
+.bubble:nth-child(7) {
+  width: 140px;
+  height: 140px;
+  top: 40%;
+  left: 25%;
+  animation-delay: 18s;
+}
+
+.bubble:nth-child(8) {
+  width: 75px;
+  height: 75px;
+  top: 65%;
+  left: 70%;
+  animation-delay: 21s;
+}
+
+.bubble:nth-child(9) {
+  width: 110px;
+  height: 110px;
+  top: 85%;
+  left: 55%;
+  animation-delay: 24s;
+}
+
+.password-wrapper {
+  position: relative;
+}
+
+.password-wrapper input {
+  width: 100%;
+  padding-right: 30px;
+}
+
+.password-wrapper i.fa {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #666;
+}

@@ -1,0 +1,136 @@
+/* perfil.component.css */
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f9f5f0;
+    /* Fondo cálido que combina con tu paleta */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.perfil-menu {
+    width: 280px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    padding: 20px 0;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    overflow: hidden;
+    border: 1px solid #e0e0e0;
+    position: relative;
+    /* Necesario para los efectos hover */
+}
+
+/* Mantengo todos tus otros estilos exactamente igual */
+.perfil-header {
+    padding: 0 20px 15px 20px;
+}
+
+.perfil-nombre {
+    font-size: 18px;
+    font-weight: 600;
+    color: #5c3b21;
+    display: block;
+    padding: 8px 0;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background-color: #f0f0f0;
+    margin: 0 20px 10px 20px;
+}
+
+.perfil-opciones {
+    display: flex;
+    flex-direction: column;
+    padding: 0 10px;
+}
+
+.perfil-opcion {
+    padding: 12px 20px;
+    margin: 4px 0;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #555;
+    font-size: 15px;
+    font-weight: 500;
+    position: relative;
+    /* Para el efecto hover */
+}
+
+.perfil-opcion:hover {
+    background-color: #f8f4f0;
+    color: #5c3b21;
+    transform: translateX(5px);
+}
+
+.perfil-opcion i {
+    margin-right: 12px;
+    width: 20px;
+    text-align: center;
+    color: #8c6a4d;
+    font-size: 16px;
+}
+
+.cerrar-sesion {
+    margin-top: 10px;
+    color: #e74c3c !important;
+    border-top: 1px solid #f0f0f0;
+    padding-top: 15px;
+}
+
+.cerrar-sesion i {
+    color: #e74c3c !important;
+}
+
+.cerrar-sesion:hover {
+    background-color: #fdeaea !important;
+}
+
+.perfil-opcion:hover::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 3px;
+    height: 20px;
+    background-color: #8c6a4d;
+    border-radius: 0 3px 3px 0;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.perfil-opcion {
+    animation: fadeIn 0.3s ease forwards;
+}
+
+.perfil-opcion:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.perfil-opcion:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.perfil-opcion:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.cerrar-sesion {
+    animation-delay: 0.4s;
+}

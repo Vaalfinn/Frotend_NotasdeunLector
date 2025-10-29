@@ -1,0 +1,63 @@
+<!-- Sección del título principal -->
+<section class="subtitle2">Descubre tu próxima aventura</section>
+
+
+<!-- Sección de Lo más leído -->
+<section class="bestsellers">
+    <div class="bestsellers-content">
+        <div class="bestsellers-text">
+            <h1>Los más leídos</h1>
+            <p>Explora nuestra selección de bestsellers y déjate llevar por emocionantes aventuras y narrativas
+                cautivadoras.</p>
+            <p>¡No te pierdas los títulos que están conquistando a los lectores!</p>
+            <button class="ver-mas" (click)="navigateToBooks()">VER MÁS</button>
+        </div>
+    </div>
+</section>
+
+<!-- Sección del Carrusel de Libros Destacados -->
+<section class="book-features">
+    <!-- Filtros por género -->
+    <div class="genre-filters">
+        <h3>Género:</h3>
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-genre="all">Todos</button>
+            <button class="filter-btn" data-genre="fantasia">Fantasía</button>
+            <button class="filter-btn" data-genre="romance">Romance</button>
+            <button class="filter-btn" data-genre="thriller">Thriller</button>
+            <button class="filter-btn" data-genre="ciencia-ficcion">Ciencia Ficción</button>
+            <button class="filter-btn" data-genre="clasicos">Clásicos</button>
+        </div>
+    </div>
+
+    <!-- Carrusel de libros destacados -->
+    <div class="featured-carousel">
+        <h3>Libros destacados del mes</h3>
+        <div class="carousel-container">
+            <button class="carousel-btn prev" (click)="prevSlide()">❮</button>
+            <div class="carousel-track">
+                <div *ngFor="let book of featuredBooks" class="carousel-book">
+                    <img [src]="book.image" [alt]="book.title" class="book-img" />
+                    <div class="book-info">
+                        <h4>{{ book.title }}</h4>
+                        <p>{{ book.author }}</p>
+                        <span class="book-rating">⭐ {{ book.rating }}</span>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-btn next" (click)="nextSlide()">❯</button>
+        </div>
+    </div>
+</section>
+<!-- Procimas lecturas -->
+<section class="bestsellers">
+    <div class="bestsellers-content">
+        <div class="bestsellers-text">
+            <h1> Próximas lecturas</h1>
+            <p>Explora nuestra selección de bestsellers y déjate llevar por emocionantes aventuras y narrativas
+                cautivadoras.</p>
+            <p>¡No te pierdas los títulos que están conquistando a los lectores!</p>
+            <button class="ver-mas" (click)="navigateToBooks()">Un libro más</button>
+        </div>
+    </div>
+</section>
