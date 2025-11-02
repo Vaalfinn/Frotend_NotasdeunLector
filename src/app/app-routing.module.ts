@@ -13,7 +13,7 @@ import { MislibrosComponent } from './pages/mislibros/mislibros.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
 
