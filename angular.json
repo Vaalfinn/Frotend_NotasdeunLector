@@ -23,7 +23,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/frontend",
+            "outputPath": "dist/frotend-notasdeun-lector",
             "index": "src/index.html",
             "baseHref": "/",
             "browser": "src/main.ts",
