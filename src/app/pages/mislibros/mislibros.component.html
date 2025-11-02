@@ -1,53 +1,71 @@
-<div class="mislibros-container">
-    <h1 class="titulo-seccion">Mis Libros Favoritos</h1>
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Mis Libros</ion-title>
+    </ion-toolbar>
+</ion-header>
 
+<ion-content [fullscreen]="true">
 
+    <div class="ion-padding">
+        <h1 class="ion-text-center">Mis Libros Favoritos</h1>
+        <h2 class="ion-text-center">Deja tu recomendación</h2>
+    </div>
 
+    <form (ngSubmit)="agregarComentario()">
 
-    <!-- Sección para agregar comentarios -->
-    <div class="agregar-comentario">
-        <h2 class="titulo-comentarios">Deja tu recomendación</h2>
-        <form (ngSubmit)="agregarComentario()" class="comentario-form">
-            <div class="form-group">
-                <label for="nombre">Tu nombre:</label>
-                <input type="text" id="nombre" [(ngModel)]="nuevoComentario.nombre" name="nombre" required>
-            </div>
+        <ion-list lines="full">
 
-            <div class="form-group">
-                <label for="comentario">Tu recomendación:</label>
-                <textarea id="comentario" [(ngModel)]="nuevoComentario.texto" name="comentario" required></textarea>
-            </div>
+            <ion-item>
+                <ion-label position="stacked">Tu nombre:</ion-label>
+                <ion-input type="text" [(ngModel)]="nuevoComentario.nombre" name="nombre" required>
+                </ion-input>
+            </ion-item>
 
-            <div class="form-group">
-                <label for="valoracion">Valoración:</label>
-                <div class="rating">
+            <ion-item>
+                <ion-label position="stacked">Tu recomendación:</ion-label>
+                <ion-textarea [(ngModel)]="nuevoComentario.texto" name="comentario" required>
+                </ion-textarea>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Valoración:</ion-label>
+                <div class="rating" slot="end">
                     <span *ngFor="let star of [1,2,3,4,5]" (click)="nuevoComentario.valoracion = star"
                         [class.active]="star <= nuevoComentario.valoracion">★</span>
                 </div>
-            </div>
+            </ion-item>
 
-            <button type="submit" class="btn-enviar">Enviar Comentario</button>
-        </form>
-    </div>
+        </ion-list>
 
-    <!-- Sección de comentarios existentes -->
-    <div class="comentarios-section">
-        <h2 class="titulo-comentarios">¿Por qué recomiendan este libro?</h2>
-
-        <div class="comentarios-list">
-            <div *ngFor="let comentario of comentarios" class="comentario-card">
-                <div class="usuario-info">
-
-                    <div>
-                        <span class="usuario-nombre">{{comentario.nombre}}</span>
-                        <div class="rating">
-                            <span *ngFor="let star of [1,2,3,4,5]"
-                                [class.active]="star <= comentario.valoracion">★</span>
-                        </div>
-                    </div>
-                </div>
-                <p class="comentario-texto">{{comentario.texto}}</p>
-                <small class="fecha">{{comentario.fecha | date:'mediumDate'}}</small>
-            </div>
+        <div class="ion-padding">
+            <ion-button type="submit" expand="block">Enviar Comentario</ion-button>
         </div>
+
+    </form>
+
+    <div class="ion-padding">
+        <h2 class="ion-text-center">¿Por qué recomiendan este libro?</h2>
     </div>
+
+    <ion-card *ngFor="let comentario of comentarios">
+
+        <ion-card-header>
+            <ion-card-title>{{comentario.nombre}}</ion-card-title>
+            <ion-card-subtitle>
+                <div class="rating"> <span *ngFor="let star of [1,2,3,4,5]"
+                        [class.active]="star <= comentario.valoracion">★</span>
+                </div>
+            </ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content>
+            <p>{{comentario.texto}}</p>
+            <small>{{comentario.fecha | date:'mediumDate'}}</small>
+        </ion-card-content>
+
+    </ion-card>
+
+</ion-content>

@@ -1,22 +1,46 @@
-<div class="micuenta-container">
-  <h3 class="micuenta-title">Datos personales</h3>
-  <hr class="micuenta-separator">
-  <h2 class="micuenta-nombre">{{ user?.nombre }} {{ user?.apellidos }}</h2>
-  <div class="micuenta-form">
-    <div class="micuenta-field">
-      <label for="nombre">Nombre</label>
-      <input id="nombre" type="text" [value]="user?.nombre" readonly>
-    </div>
-    <div class="micuenta-field">
-      <label for="correo">Correo electrónico</label>
-      <input id="correo" type="email" [value]="user?.email" readonly>
-    </div>
-    <div class="micuenta-field">
-      <label for="Tipo Lector">Tipo Lector</label>
-    </div>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Mi Cuenta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div class="ion-padding ion-text-center">
+    <h2>{{ user?.nombre }} {{ user?.apellidos }}</h2>
   </div>
 
-  <div class="perfil-opcion cerrar-sesion" (click)="logout()">
-    <i class="fa fa-sign-out"></i> Cerrar sesión
+  <ion-list lines="full">
+
+    <ion-list-header>
+      <h3>Datos personales</h3>
+    </ion-list-header>
+
+    <ion-item>
+      <ion-label>Nombre:</ion-label>
+      <ion-note slot="end">{{ user?.nombre }}</ion-note>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Correo:</ion-label>
+      <ion-note slot="end">{{ user?.email }}</ion-note>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Tipo Lector:</ion-label>
+      <ion-note slot="end">{{ user?.tipoLector || 'No definido' }}</ion-note>
+    </ion-item>
+
+  </ion-list>
+
+  <div class="ion-padding">
+    <ion-button (click)="logout()" expand="block" color="danger">
+      <ion-icon name="log-out-outline" slot="start"></ion-icon>
+      Cerrar sesión
+    </ion-button>
   </div>
-</div>
+
+</ion-content>

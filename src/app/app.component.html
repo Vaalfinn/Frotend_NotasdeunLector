@@ -1,78 +1,46 @@
-<nav>
-    <ul>
-        <li><a routerLink="/home">Nuevo mundo</a></li>
-        <li><a routerLink="/novedades">Novedades</a></li>
-        <li><a routerLink="/libros">Recomendados</a></li>
-        <li><a routerLink="/perfil"><i class="fa fa-user"></i></a>
-            <ul class="submenu">
-                <li><a routerLink="micuenta">Mi cuenta</a></li>
-                <li><a routerLink="mibiblioteca">Mi biblioteca</a></li>
-                <li><a routerLink="ayuda">Ayuda</a></li>
+<ion-app>
 
-            </ul>
+    <ion-menu contentId="main-content">
 
-        </li>
-        <li>
-            <a routerLink="/register">Registrarte</a>
-            <ul class="submenu">
-                <li><a routerLink="/login">Iniciar Sesión</a></li>
-            </ul>
-        </li>
+        <ion-header>
+            <ion-toolbar>
+                <ion-title>NotasdeunLector</ion-title>
+            </ion-toolbar>
+        </ion-header>
 
-    </ul>
+        <ion-content>
+            <ion-list>
 
-</nav>
+                <ion-item button routerLink="/home">Nuevo mundo</ion-item>
+                <ion-item button routerLink="/novedades">Novedades</ion-item>
+                <ion-item button routerLink="/libros">Recomendados</ion-item>
 
-<router-outlet></router-outlet>
-<div>
-    <footer class="site-footer">
-        <div class="footer-container">
-            <!-- Sección de redes sociales -->
-            <div class="footer-social">
-                <h3>Síguenos en redes</h3>
-                <div class="social-icons">
-                    <a href="https://facebook.com" target="_blank" class="social-icon">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="https://instagram.com" target="_blank" class="social-icon">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://twitter.com" target="_blank" class="social-icon">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="https://pinterest.com" target="_blank" class="social-icon">
-                        <i class="fab fa-pinterest-p"></i>
-                    </a>
-                </div>
-            </div>
+                <ion-item-divider>
+                    <ion-label>Perfil</ion-label>
+                </ion-item-divider>
+                <ion-item button routerLink="/perfil">
+                    <ion-icon name="person-circle-outline" slot="start"></ion-icon>
+                    Mi Perfil
+                </ion-item>
+                <ion-item button routerLink="/micuenta">Mi cuenta</ion-item>
+                <ion-item button routerLink="/mibiblioteca">Mi biblioteca</ion-item>
+                <ion-item button routerLink="/ayuda">Ayuda</ion-item>
 
-            <!-- Sección de enlaces rápidos -->
-            <div class="footer-links">
-                <h3>Explora</h3>
-                <ul>
-                    <li><a href="/home">Inicio</a></li>
-                    <li><a href="/novedades">Novedades</a></li>
-                    <li><a href="/libros">Libros</a></li>
-                    <li><a href="/mibiblioteca">Mi Biblioteca</a></li>
+                <ion-item-divider>
+                    <ion-label>Acceso</ion-label>
+                </ion-item-divider>
+                <ion-item button routerLink="/register">Registrarte</ion-item>
+                <ion-item button routerLink="/login">Iniciar Sesión</ion-item>
 
-                </ul>
-            </div>
+                <ion-item-divider>
+                    <ion-label>Explora</ion-label>
+                </ion-item-divider>
+                <ion-item button href="/home">Inicio</ion-item>
+                <ion-item button href="/novedades">Novedades</ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-menu>
 
-            <!-- Sección de newsletter -->
-            <div class="footer-newsletter">
-                <h3>Suscríbete a nuestro boletín</h3>
-                <p>Recibe las últimas novedades y recomendaciones de libros.</p>
-                <form class="newsletter-form">
-                    <input type="email" placeholder="Tu correo electrónico" required>
-                    <button type="submit">Suscribirse</button>
-                </form>
-            </div>
-        </div>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
 
-        <!-- Copyright -->
-        <div class="footer-bottom">
-            <p>&copy; 2023 Blog de Libros. Todos los derechos reservados.</p>
-            <p>Creado con ❤️ para amantes de la lectura</p>
-        </div>
-    </footer>
-</div>
+</ion-app>

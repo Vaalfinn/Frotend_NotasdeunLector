@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -20,11 +20,12 @@ import { ModalVisitanteComponent } from './auth/modal-visitante/modal-visitante.
 import { MicuentaComponent } from './pages/micuenta/micuenta.component';
 import { MibibliotecaComponent } from './pages/mibiblioteca/mibiblioteca.component';
 import { MislibrosComponent } from './pages/mislibros/mislibros.component';
+import { IonicModule } from '@ionic/angular';
 
 @NgModule({
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   declarations: [
     AppComponent,
-    HomeComponent,
     PerfilComponent,
     NovedadesComponent,
     ModalVisitanteComponent,
@@ -34,6 +35,7 @@ import { MislibrosComponent } from './pages/mislibros/mislibros.component';
   ],
   imports: [
     BrowserModule,
+    IonicModule.forRoot(),
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
@@ -45,6 +47,8 @@ import { MislibrosComponent } from './pages/mislibros/mislibros.component';
     FormsModule,
     MislibrosComponent,
     MibibliotecaComponent,
+    IonicModule.forRoot({}),
+
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }

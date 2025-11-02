@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { IonicModule } from '@ionic/angular';
 
 interface Libro {
   id: number;
@@ -23,7 +24,7 @@ interface Comentario {
 @Component({
   selector: 'app-mibiblioteca',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, IonicModule],
   templateUrl: './mibiblioteca.component.html',
   styleUrls: ['./mibiblioteca.component.css']
 })
@@ -67,7 +68,7 @@ export class MibibliotecaComponent implements OnInit {
       texto: 'Un libro fascinante que narra la historia de la familia Buendía.',
       calificacion: 5,
       usuarioNombre: 'Valeria Flores Martínez',
-      fecha: new Date('2025-8-09'),
+      fecha: new Date('2025-10-30'),
       esNotaPrivada: false
     },
     {
@@ -77,7 +78,7 @@ export class MibibliotecaComponent implements OnInit {
       texto: 'Una obra maestra de la distopía moderna.',
       calificacion: 4,
       usuarioNombre: 'Valeria Flores Martínez',
-      fecha: new Date('2025-08-10'),
+      fecha: new Date('2025-10-30'),
       esNotaPrivada: true
     }
   ];

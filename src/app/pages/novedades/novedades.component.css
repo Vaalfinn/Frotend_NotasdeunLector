@@ -1,312 +1,158 @@
-.search-section {
-    margin: 30px 0 40px 0;
-    width: 100%;
-    padding: 0 20px;
+/* --- 1. Fondo de la Página --- */
+ion-content {
+    --background: #ffffff;
+    --color: #804D23;
 }
 
-.search-container {
-    display: flex;
-    max-width: 800px;
-    margin: 0 auto;
-    box-shadow: 0 4px 20px rgb(177, 59, 255);
-    border-radius: 50px;
-    overflow: hidden;
-    transition: all 0.3s ease;
-}
+/* --- 2. Barra de Búsqueda (tu .search-container) --- */
+/* Apuntamos a <ion-searchbar> y usamos sus variables CSS
+  para recrear tu estilo.
+*/
+ion-searchbar {
+    /* Tu sombra morada */
+    --box-shadow: 0 4px 20px rgb(177, 59, 255);
 
-.search-container:focus-within {
-    box-shadow: 0 4px 25px rgba(219, 169, 121, 0.25);
-    transform: translateY(-2px);
-}
+    --border-radius: 50px;
+    /* Tu borde redondeado */
+    --background: #fff;
+    /* Tu fondo de input */
 
-.search-input {
-    width: 100%;
-    padding: 1rem 1.5rem;
-    border: none;
-    border-radius: 50px 0 0 50px;
+    /* Tu color de placeholder */
+    --placeholder-color: #804D23;
+    --placeholder-font-weight: 400;
+
+    /* Tu color de texto al escribir */
+    --color: #804D23;
+
+    /* El icono de la lupa (basado en tu botón morado) */
+    --icon-color: #B13BFF;
+
+    padding: 15px;
+    /* Espaciado */
     font-size: 1.1rem;
-    background-color: #fff;
-    color: #b1b1b1;
-    transition: all 0.3s ease;
 }
 
-.search-input::placeholder {
-    color: #804D23;
-    font-weight: 400;
-}
-
-.search-input:focus {
-    outline: none;
-    background-color: #f9f5f0;
-}
-
-.search-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    background-color: #B13BFF;
-    border: none;
-    padding: 0 1.8rem;
-    border-radius: 0 50px 50px 0;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    color: white;
-    font-weight: 600;
-}
-
-.search-button:hover {
-    background-color: #c99762;
-}
-
-.search-button i {
-    font-size: 1rem;
-}
-
-.search-text {
-    display: inline-block;
-}
-
-/* Efecto para móviles */
-@media (max-width: 768px) {
-    .search-container {
-        border-radius: 30px;
-    }
-
-    .search-input {
-        padding: 0.9rem 1.2rem;
-        font-size: 1rem;
-    }
-
-    .search-button {
-        padding: 0 1.2rem;
-    }
-
-    .search-text {
-        display: none;
-    }
-}
-
-.genre-filters-container {
-    max-width: 1200px;
-    margin: 0 auto 40px;
-    padding: 0 20px;
-}
+/* --- 3. Filtros de Género (tu .filter-btn) --- */
+/*
+  Apuntamos a <ion-chip> y usamos la variable [outline]
+  que pusimos en el HTML para manejar el estado activo/inactivo.
+*/
 
 .filter-title {
     text-align: center;
     color: #804D23;
     font-size: 1.5rem;
-    margin-bottom: 20px;
+    margin-bottom: 0;
+    margin-top: 10px;
     font-weight: 600;
 }
 
-.filter-buttons {
+/* Contenedor para que los chips se deslicen horizontalmente */
+.chip-container {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-wrap: nowrap;
+    /* Fuerza una sola línea */
+    overflow-x: auto;
+    /* Permite el scroll horizontal */
+    padding: 16px;
     gap: 12px;
-    margin: 0 auto;
+    /* Esto quita la barra de scroll visual */
+    -ms-overflow-style: none;
+    /* IE y Edge */
+    scrollbar-width: none;
+    /* Firefox */
 }
 
-.filter-btn {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background-color: #f8f1e9;
-    color: #5a3921;
-    border: 2px solid #e8d5c0;
-    border-radius: 30px;
-    padding: 10px 20px;
-    font-size: 0.95rem;
+.chip-container::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari y Opera */
+}
+
+
+/* --- Estilo para el chip NO SELECCIONADO (outline="true") --- */
+/* (Equivalente a tu .filter-btn) */
+ion-chip[outline="true"] {
+    --background: #f8f1e9;
+    --color: #5a3921;
+    --border-color: #e8d5c0;
+    --border-width: 2px;
+    --border-radius: 30px;
     font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    padding: 10px 15px;
 }
 
-.filter-btn i {
-    font-size: 0.9rem;
+ion-chip[outline="true"] ion-icon {
     color: #DBA979;
 }
 
-.filter-btn:hover {
-    background-color: #e8d5c0;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(219, 169, 121, 0.2);
-}
-
-.filter-btn.active {
-    background-color: #DBA979;
-    color: white;
-    border-color: #DBA979;
+/* --- Estilo para el chip SELECCIONADO (solid, outline="false") --- */
+/* (Equivalente a tu .filter-btn.active) */
+ion-chip {
+    --background: #DBA979;
+    --color: rgb(83, 27, 159);
+    --border-color: #DBA979;
+    --border-radius: 30px;
     font-weight: 600;
+    padding: 10px 15px;
 }
 
-.filter-btn.active i {
-    color: white;
+ion-chip ion-icon {
+    color: rgb(82, 27, 159);
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .filter-buttons {
-        gap: 8px;
-    }
 
-    .filter-btn {
-        padding: 8px 15px;
-        font-size: 0.85rem;
-    }
+/* --- 4. Cuadrícula de Libros (tu .book-card) --- */
+/*
+  <ion-grid> y <ion-col> manejan el layout.
+  Solo necesitamos estilizar la <ion-card>
+*/
+ion-col>ion-card {
+    /* Forzamos la tarjeta a no tener márgenes, 
+     <ion-col> ya da el espaciado. */
+    margin: 0;
+    width: 100%;
+    /* Ocupa el 100% de la columna */
 
-    .filter-btn i {
-        font-size: 0.8rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .filter-buttons {
-        gap: 6px;
-    }
-
-    .filter-btn {
-        padding: 6px 12px;
-        font-size: 0.8rem;
-    }
-
-    .filter-title {
-        font-size: 1.3rem;
-    }
-}
-
-.books-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-    margin-top: 30px;
-    transition: all 0.3s ease;
-}
-
-.book-card {
-    background: white;
+    /* Tus estilos de .book-card */
+    --background: #E2B8FF;
     border-radius: 10px;
-    padding: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    padding: 0;
+    /* Quitamos el padding de la tarjeta */
 }
 
-.book-card:hover {
-    transform: translateY(-5px);
-}
-
-/* novedades.component.css */
-.alternative-covers {
-    display: flex;
-    gap: 5px;
-    margin-top: 5px;
-    overflow-x: auto;
-    padding-bottom: 5px;
-}
-
-.alt-cover {
-    height: 80px;
-    width: auto;
-    border-radius: 4px;
-    border: 1px solid #eee;
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-
-.alt-cover:hover {
-    transform: scale(1.05);
-}
-
-.main-cover {
-    position: relative;
-}
-
-.main-cover:hover .book-cover {
-    transform: scale(1.02);
-}
-
-/* Contenedor principal de la portada */
-.main-cover {
-    height: 300px;
-    /* Altura fija para todas las portadas */
+/* (Tu .main-cover y .book-cover) */
+ion-card img {
     width: 100%;
-    overflow: hidden;
-    border-radius: 8px;
-    position: relative;
-    background: #f5f5f5;
-    /* Color de fondo mientras carga */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Estilo para la imagen principal */
-.book-cover {
-    width: 100%;
-    height: 100%;
+    height: 250px;
+    /* Reducimos un poco la altura para móviles */
     object-fit: cover;
-    /* Asegura que la imagen cubra el espacio */
-    transition: transform 0.3s ease;
+    border-radius: 10px 10px 0 0;
+    /* Redondear solo esquinas superiores */
 }
 
-/* Efecto hover */
-.book-card:hover .book-cover {
-    transform: scale(1.05);
-}
-
-/* Contenedor de información del libro */
-.book-info {
+/* (Tu .book-info) */
+ion-card-header {
     padding: 15px;
 }
 
-.book-info h4 {
-    margin: 10px 0 5px 0;
-    font-size: 1.1rem;
-    color: #333;
+ion-card-title {
+    font-size: 1rem;
+    /* Ajustado para tarjetas pequeñas */
+    color: #804D23;
+    font-weight: bold;
 }
 
-.book-info p {
-    margin: 0 0 8px 0;
+ion-card-subtitle {
     color: #666;
     font-size: 0.9rem;
 }
 
-.rating {
+/* (Tu .rating) */
+ion-card-content {
+    padding: 0 15px 15px 15px;
+    /* Padding solo abajo */
     color: #dba979;
     font-weight: 600;
-}
-
-/* Portadas alternativas */
-.alternative-covers {
-    display: flex;
-    gap: 8px;
-    margin-top: 10px;
-    padding-bottom: 5px;
-    overflow-x: auto;
-}
-
-.alt-cover {
-    height: 60px;
-    width: auto;
-    border-radius: 4px;
-    border: 1px solid #eee;
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-
-.alt-cover:hover {
-    transform: scale(1.1);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .main-cover {
-        height: 250px;
-    }
-
-    .book-info h4 {
-        font-size: 1rem;
-    }
+    font-size: 0.9rem;
 }

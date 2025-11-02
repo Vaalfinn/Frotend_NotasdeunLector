@@ -1,9 +1,11 @@
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalVisitanteComponent } from '../../auth/modal-visitante/modal-visitante.component';
 import { AuthService } from '../../auth/auth.service';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { IonicModule } from '@ionic/angular';
+import { CommonModule } from '@angular/common';
 
 interface Book {
   id: number;
@@ -17,14 +19,25 @@ interface Book {
 
 @Component({
   selector: 'app-home',
-  standalone: false,
+  standalone: true,
+  imports: [IonicModule, CommonModule, RouterModule],
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
+
 })
 export class HomeComponent implements OnInit {
 
   featuredBooks: Book[] = [];
   currentSlide = 0;
+  @ViewChild('carousel', { static: false }) carousel?: ElementRef<HTMLDivElement>;
+
+  constructor(
+    private router: Router,
+    private dialog: MatDialog,
+    private authService: AuthService
+  ) {
+  }
+
   books: Book[] = [
     {
       id: 1,
@@ -47,7 +60,7 @@ export class HomeComponent implements OnInit {
 
     {
       id: 3,
-      title: 'Alemdra',
+      title: 'Alemendra',
       author: 'Wo Pyung Sohn',
       genre: 'thriller',
       rating: 4.6,
@@ -77,7 +90,7 @@ export class HomeComponent implements OnInit {
       title: 'El Proceso',
       author: 'Franz Kafka',
       genre: 'fantacia',
-      rating: 5.0,
+      rating: 5,
       image: 'https://images.cdn2.buscalibre.com/fit-in/360x360/68/80/6880ee206baf079c74d5e70ef32ff560.jpg',
       featured: true
     },
@@ -93,11 +106,7 @@ export class HomeComponent implements OnInit {
 
   ];
 
-  constructor(
-    private router: Router,
-    private dialog: MatDialog,
-    private authService: AuthService
-  ) { }
+
 
   ngOnInit(): void {
     this.featuredBooks = this.books.filter(b => b.featured);
@@ -122,37 +131,37 @@ export class HomeComponent implements OnInit {
   }
 
   initCarousel() {
-    // Inicializar carrusel
-    setInterval(() => {
-      this.nextSlide();
-    }, 5000);
+    // Inicializar carrusel (autoscroll opcional)
+    // Puedes activar esto si quieres que avance solo cada X ms
+    // setInterval(() => this.nextSlide(), 5000);
   }
-
   nextSlide() {
-    const track = document.querySelector('.carousel-track') as HTMLElement;
-    const books = document.querySelectorAll('.carousel-book');
-    if (this.currentSlide < this.books.filter(b => b.featured).length - 1) {
-      this.currentSlide++;
-    } else {
-      this.currentSlide = 0;
-    }
-    if (track) track.style.transform = `translateX(-${this.currentSlide * 240}px)`;
+    if (!this.carousel) return;
+    const el = this.carousel.nativeElement;
+    const card = el.querySelector('.carousel-card') as HTMLElement | null;
+    const step = (card?.offsetWidth ?? 300) + 16;
+    el.scrollBy({ left: step, behavior: 'smooth' });
   }
 
   prevSlide() {
-    const track = document.querySelector('.carousel-track') as HTMLElement;
-    if (this.currentSlide > 0) {
-      this.currentSlide--;
-      if (track) track.style.transform = `translateX(-${this.currentSlide * 240}px)`;
-    }
+    if (!this.carousel) return;
+    const el = this.carousel.nativeElement;
+    const card = el.querySelector('.carousel-card') as HTMLElement | null;
+    const step = (card?.offsetWidth ?? 300) + 16;
+    el.scrollBy({ left: -step, behavior: 'smooth' });
   }
 
-  filterBooks(genre: string) {
-    // Lógica para filtrar libros
+  filterBooks(genre: string, ev?: Event) {
+    // Lógica para filtrar libros (marcar botón activo)
     const buttons = document.querySelectorAll('.filter-btn');
-    buttons.forEach(btn => btn.classList.remove('active'));
-    (event?.target as HTMLElement)?.classList.add('active');
-    // Aquí implementarías la lógica de filtrado real
+    for (const btn of Array.from(buttons)) {
+      (btn as HTMLElement).classList.remove('active');
+    }
+    if (ev?.target) (ev.target as HTMLElement).classList.add('active');
     console.log(`Filtrando por: ${genre}`);
+  }
+  segmentChanged(event: any) {
+    const genre = event.detail.value;
+    console.log('Género seleccionado:', genre);
   }
 }

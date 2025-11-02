@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { IonicModule } from '@ionic/angular';
 
 interface Comentario {
   nombre: string;
@@ -12,7 +13,8 @@ interface Comentario {
 
 @Component({
   selector: 'app-mislibros',
-  imports: [CommonModule, FormsModule],
+  standalone: true,
+  imports: [CommonModule, FormsModule, IonicModule],
   templateUrl: './mislibros.component.html',
   styleUrls: ['./mislibros.component.css']
 })

@@ -1,63 +1,73 @@
-<!-- Sección del título principal -->
-<section class="subtitle2">Descubre tu próxima aventura</section>
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Nuevo Mundo</ion-title>
+    </ion-toolbar>
+</ion-header>
 
+<ion-content [fullscreen]="true">
 
-<!-- Sección de Lo más leído -->
-<section class="bestsellers">
-    <div class="bestsellers-content">
-        <div class="bestsellers-text">
-            <h1>Los más leídos</h1>
-            <p>Explora nuestra selección de bestsellers y déjate llevar por emocionantes aventuras y narrativas
-                cautivadoras.</p>
-            <p>¡No te pierdas los títulos que están conquistando a los lectores!</p>
-            <button class="ver-mas" (click)="navigateToBooks()">VER MÁS</button>
-        </div>
+    <div class="ion-padding">
+        <h2>Descubre tu próxima aventura</h2>
     </div>
-</section>
 
-<!-- Sección del Carrusel de Libros Destacados -->
-<section class="book-features">
-    <!-- Filtros por género -->
-    <div class="genre-filters">
+
+
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title>Los más leídos</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            <p>Explora nuestra selección de bestsellers...</p>
+            <ion-button expand="block" (click)="navigateToBooks()">VER MÁS</ion-button>
+        </ion-card-content>
+    </ion-card>
+
+
+    <div class="ion-padding">
         <h3>Género:</h3>
-        <div class="filter-buttons">
-            <button class="filter-btn active" data-genre="all">Todos</button>
-            <button class="filter-btn" data-genre="fantasia">Fantasía</button>
-            <button class="filter-btn" data-genre="romance">Romance</button>
-            <button class="filter-btn" data-genre="thriller">Thriller</button>
-            <button class="filter-btn" data-genre="ciencia-ficcion">Ciencia Ficción</button>
-            <button class="filter-btn" data-genre="clasicos">Clásicos</button>
-        </div>
+        <ion-segment (ionChange)="segmentChanged($event)" value="all">
+            <ion-segment-button value="all">
+                <ion-label>Todos</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="fantasia">
+                <ion-label>Fantasía</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="romance">
+                <ion-label>Romance</ion-label>
+            </ion-segment-button>
+        </ion-segment>
+
+        <h3 class="ion-margin-top">Libros destacados del mes</h3>
     </div>
 
-    <!-- Carrusel de libros destacados -->
-    <div class="featured-carousel">
-        <h3>Libros destacados del mes</h3>
-        <div class="carousel-container">
-            <button class="carousel-btn prev" (click)="prevSlide()">❮</button>
-            <div class="carousel-track">
-                <div *ngFor="let book of featuredBooks" class="carousel-book">
-                    <img [src]="book.image" [alt]="book.title" class="book-img" />
-                    <div class="book-info">
-                        <h4>{{ book.title }}</h4>
-                        <p>{{ book.author }}</p>
-                        <span class="book-rating">⭐ {{ book.rating }}</span>
-                    </div>
-                </div>
-            </div>
-            <button class="carousel-btn next" (click)="nextSlide()">❯</button>
+    <div class="carousel-wrapper">
+        <button class="carousel-btn prev" (click)="prevSlide()">‹</button>
+        <div class="carousel-track" #carousel>
+            <ion-card class="carousel-card" *ngFor="let book of featuredBooks">
+                <img [src]="book.image" [alt]="book.title" />
+                <ion-card-header>
+                    <ion-card-subtitle>{{ book.author }}</ion-card-subtitle>
+                    <ion-card-title>{{ book.title }}</ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                    ⭐ {{ book.rating }}
+                </ion-card-content>
+            </ion-card>
         </div>
+        <button class="carousel-btn next" (click)="nextSlide()">›</button>
     </div>
-</section>
-<!-- Procimas lecturas -->
-<section class="bestsellers">
-    <div class="bestsellers-content">
-        <div class="bestsellers-text">
-            <h1> Próximas lecturas</h1>
-            <p>Explora nuestra selección de bestsellers y déjate llevar por emocionantes aventuras y narrativas
-                cautivadoras.</p>
-            <p>¡No te pierdas los títulos que están conquistando a los lectores!</p>
-            <button class="ver-mas" (click)="navigateToBooks()">Un libro más</button>
-        </div>
-    </div>
-</section>
+
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title>Próximas lecturas</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            <p>Explora nuestra selección de bestsellers...</p>
+            <ion-button expand="block" (click)="navigateToBooks()">Un libro más</ion-button>
+        </ion-card-content>
+    </ion-card>
+
+</ion-content>

@@ -1,92 +1,125 @@
-<div class="biblioteca-container">
-    <header class="biblioteca-header">
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Mi Biblioteca</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+    <div class="ion-padding ion-text-center">
         <h1>Mi Biblioteca Personal</h1>
         <p>Organiza tus lecturas, comentarios y libros favoritos</p>
-    </header>
-
-    <div class="biblioteca-content">
-        <!-- Sección de agregar comentarios/notas -->
-        <div class="comentario-section">
-            <h2><i class="fas fa-edit"></i> Agregar Comentario/Nota</h2>
-            <div class="comentario-form">
-                <div class="form-group">
-                    <label for="libro-select">Selecciona un libro:</label>
-                    <select id="libro-select" [(ngModel)]="libroSeleccionado" required>
-                        <option value="">-- Selecciona un libro --</option>
-                        <option *ngFor="let libro of misLibros" [value]="libro.id">{{libro.titulo}}</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="comentario">Tu comentario/nota:</label>
-                    <textarea id="comentario" [(ngModel)]="nuevoComentario"
-                        placeholder="Escribe tus impresiones sobre el libro..." required></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label>Calificación:</label>
-                    <div class="rating-stars">
-                        <span *ngFor="let star of [1,2,3,4,5]" (click)="calificacion = star"
-                            [class.active]="star <= calificacion">★</span>
-                    </div>
-                </div>
-
-                <div class="form-group checkbox">
-                    <input type="checkbox" id="es-nota" [(ngModel)]="esNotaPrivada">
-                    <label for="es-nota">Favorito del mes</label>
-                </div>
-
-                <button (click)="agregarComentario()" class="btn-guardar">
-                    {{ esNotaPrivada ? 'Guardar Nota' : 'Guardar Comentario' }}
-                </button>
-            </div>
-        </div>
-
-        <!-- Resto de tu HTML... -->
-        <!-- Sección de comentarios de otros usuarios -->
-        <section class="comentarios-otros-section">
-            <h2><i class="fas fa-comments"></i> Comentarios de la Comunidad</h2>
-
-            <div class="filtros">
-                <input type="text" placeholder="Buscar por título o autor..." [(ngModel)]="filtroBusqueda">
-                <select [(ngModel)]="filtroCalificacion">
-                    <option value="0">Todas las calificaciones</option>
-                    <option *ngFor="let i of [1,2,3,4,5]" [value]="i">{{i}} estrella(s)</option>
-                </select>
-            </div>
-
-            <div class="comentarios-list">
-                <div *ngFor="let comentario of comentariosFiltrados" class="comentario-card">
-                    <div class="comentario-header">
-                        <h3>{{comentario.libroTitulo}}</h3>
-                        <span class="rating">{{comentario.calificacion}} ★</span>
-                    </div>
-                    <p class="comentario-texto">{{comentario.texto}}</p>
-                    <div class="comentario-footer">
-                        <span class="usuario">{{comentario.usuarioNombre}}</span>
-                        <span class="fecha">{{comentario.fecha | date:'mediumDate'}}</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Sección de favoritos -->
-        <section class="favoritos-section">
-            <h2><i class="fas fa-heart"></i> Mis Libros Favoritos del Mes</h2>
-
-            <div class="favoritos-grid">
-                <div *ngFor="let libro of librosFavoritos" class="libro-card">
-                    <img [src]="libro.portada" [alt]="libro.titulo" class="portada">
-                    <div class="libro-info">
-                        <h3>{{libro.titulo}}</h3>
-                        <p class="autor">{{libro.autor}}</p>
-                        <div class="acciones">
-                            <button (click)="verDetalles(libro.id)" class="btn-detalles">Ver detalles</button>
-                            <button (click)="quitarFavorito(libro.id)" class="btn-quitar">Quitar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
     </div>
-</div>
+
+    <ion-list lines="full">
+        <ion-list-header>
+            <h2>
+                <ion-icon name="create-outline" slot="start"></ion-icon>
+                Agregar Comentario/Nota
+            </h2>
+        </ion-list-header>
+
+        <ion-item>
+            <ion-label position="stacked">Selecciona un libro:</ion-label>
+            <ion-select [(ngModel)]="libroSeleccionado" required placeholder="-- Selecciona un libro --">
+                <ion-select-option *ngFor="let libro of misLibros" [value]="libro.id">
+                    {{libro.titulo}}
+                </ion-select-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="stacked">Tu comentario/nota:</ion-label>
+            <ion-textarea [(ngModel)]="nuevoComentario" placeholder="Escribe tus impresiones sobre el libro..."
+                required>
+            </ion-textarea>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Calificación:</ion-label>
+            <div class="rating-stars" slot="end">
+                <span *ngFor="let star of [1,2,3,4,5]" (click)="calificacion = star"
+                    [class.active]="star <= calificacion">★</span>
+            </div>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Favorito del mes</ion-label>
+            <ion-toggle [(ngModel)]="esNotaPrivada" slot="end"></ion-toggle>
+        </ion-item>
+
+    </ion-list>
+
+    <div class="ion-padding">
+        <ion-button (click)="agregarComentario()" expand="block">
+            {{ esNotaPrivada ? 'Guardar Nota' : 'Guardar Comentario' }}
+        </ion-button>
+    </div>
+
+    <div class="ion-padding">
+        <h2>
+            <ion-icon name="chatbubbles-outline" slot="start"></ion-icon>
+            Comentarios de la Comunidad
+        </h2>
+    </div>
+
+    <ion-list lines="none" class="ion-padding-horizontal">
+        <ion-item>
+            <ion-input placeholder="Buscar por título o autor..." [(ngModel)]="filtroBusqueda"></ion-input>
+            <ion-icon name="search-outline" slot="start"></ion-icon>
+        </ion-item>
+        <ion-item>
+            <ion-select [(ngModel)]="filtroCalificacion" placeholder="Todas las calificaciones">
+                <ion-select-option value="0">Todas las calificaciones</ion-select-option>
+                <ion-select-option *ngFor="let i of [1,2,3,4,5]" [value]="i">
+                    {{i}} estrella(s)
+                </ion-select-option>
+            </ion-select>
+        </ion-item>
+    </ion-list>
+
+    <ion-card *ngFor="let comentario of comentariosFiltrados">
+        <ion-card-header>
+            <ion-card-title>{{comentario.libroTitulo}}</ion-card-title>
+            <span class="rating" slot="end">{{comentario.calificacion}} ★</span>
+        </ion-card-header>
+        <ion-card-content>
+            <p>{{comentario.texto}}</p>
+            <ion-item lines="none" class="comentario-footer">
+                <ion-label slot="start">{{comentario.usuarioNombre}}</ion-label>
+                <ion-label slot="end" class="fecha">{{comentario.fecha | date:'mediumDate'}}</ion-label>
+            </ion-item>
+        </ion-card-content>
+    </ion-card>
+
+    <div class="ion-padding">
+        <h2>
+            <ion-icon name="heart-outline" slot="start"></ion-icon>
+            Mis Libros Favoritos del Mes
+        </h2>
+    </div>
+
+    <ion-grid>
+        <ion-row>
+            <ion-col size="12" size-md="6" *ngFor="let libro of librosFavoritos">
+
+                <ion-card>
+                    <img [src]="libro.portada" [alt]="libro.titulo" />
+                    <ion-card-header>
+                        <ion-card-title>{{libro.titulo}}</ion-card-title>
+                        <ion-card-subtitle>{{libro.autor}}</ion-card-subtitle>
+                    </ion-card-header>
+                    <ion-card-content class="acciones">
+                        <ion-button fill="clear" (click)="verDetalles(libro.id)">Ver detalles</ion-button>
+                        <ion-button fill="clear" color="danger" (click)="quitarFavorito(libro.id)">Quitar</ion-button>
+                    </ion-card-content>
+                </ion-card>
+
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+</ion-content>

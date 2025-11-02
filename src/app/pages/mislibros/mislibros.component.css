@@ -1,139 +1,104 @@
-/* Estilos generales */
-.mislibros-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+/*
+=============================================
+  CSS "Traducido" para mislibros.component.css
+=============================================
+*/
+
+/* --- 1. Estilos Generales --- */
+ion-content {
+    /* Establecemos la fuente y el color de fondo base */
     font-family: 'Arial', sans-serif;
-    color: #D08AFF;
+    --background: #ffffff;
+    /* Fondo blanco por defecto */
+    --color: #333;
+    /* Color de texto por defecto */
 }
 
-.titulo-seccion {
-    text-align: center;
+/* --- 2. Títulos de la Página --- */
+/* (Tus .titulo-seccion y .titulo-comentarios) */
+ion-content h1,
+ion-content h2 {
     color: #804D23;
-    margin-bottom: 30px;
-    font-size: 2.2rem;
+    /* Tu color de título */
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    /* Un poco más pequeño para móvil */
     border-bottom: 2px solid #eee;
     padding-bottom: 10px;
+    /* El centrado ya lo hicimos en el HTML con class="ion-text-center" */
 }
 
-/* Estilos para la sección de comentarios */
-.comentarios-section {
-    margin-top: 50px;
-}
-
-.titulo-comentarios {
-    color: #804D23;
-    border-bottom: 2px solid #eee;
-    padding-bottom: 10px;
-    margin-bottom: 30px;
-}
-
-.comentarios-list {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.comentario-card {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.usuario-info {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 15px;
-}
-
-.usuario-avatar {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.usuario-nombre {
-    font-weight: bold;
-    color: #B13BFF;
-}
-
-.comentario-texto {
-    line-height: 1.6;
-    color: #555;
-    font-size: 1rem;
-}
-
-/* Responsive design */
-@media (max-width: 768px) {
-    .libro-container {
-        flex-direction: column;
-    }
-
-    .portada-container {
-        flex: 1;
-        margin-bottom: 20px;
-    }
-}
-
-/* Estilos para el formulario de comentarios */
-.agregar-comentario {
+/* --- 3. Formulario de Comentarios --- */
+/* (Tu .agregar-comentario) 
+   Aplicamos los estilos al <ion-list> que agrupa los campos
+*/
+form ion-list {
     background: #f5f5f5;
-    padding: 25px;
+    /* Tu fondo de formulario */
     border-radius: 8px;
-    margin-bottom: 40px;
     box-shadow: 0 2px 5px rgb(177, 59, 255);
+    /* Tu sombra morada */
+    margin: 16px;
+    /* Reemplaza el padding del .agregar-comentario */
+    padding: 0;
 }
 
-.comentario-form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+/* (Tu .form-group) 
+   Apuntamos a <ion-item>
+*/
+form ion-item {
+    /* Hacemos que los items tengan el mismo fondo que la lista */
+    --background: #f5f5f5;
+    --padding-start: 16px;
+    /* Espaciado interno */
 }
 
-.form-group {
-    display: flex;
-    flex-direction: column;
-}
-
-.form-group label {
-    margin-bottom: 8px;
+/* (Tu .form-group label) 
+   Apuntamos a <ion-label>
+*/
+form ion-label {
     font-weight: 600;
     color: #2c3e50;
+    /* Tu color de label */
+    font-size: 0.9rem;
 }
 
-.form-group input,
-.form-group textarea {
-    padding: 10px;
+/* (Tu .form-group input/textarea)
+   Apuntamos a <ion-input> y <ion-textarea>
+*/
+form ion-input,
+form ion-textarea {
+    background: #ffffff;
+    /* Fondo blanco para el campo */
     border: 1px solid #ddd;
     border-radius: 4px;
+    padding-left: 10px !important;
+    /* Forzar padding */
+    margin-top: 8px;
     font-size: 1rem;
 }
 
-.form-group textarea {
+form ion-textarea {
     min-height: 100px;
-    resize: vertical;
 }
 
-.btn-enviar {
-    background-color: #B13BFF;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 4px;
-    cursor: pointer;
+/* (Tu .btn-enviar) 
+   Apuntamos a <ion-button>
+*/
+form ion-button {
+    --background: #B13BFF;
+    /* Tu color de botón */
+    --color: white;
+    --border-radius: 4px;
+    --box-shadow: none;
+    /* Quitamos sombra de Ionic si no la quieres */
     font-size: 1rem;
-    align-self: flex-start;
-    transition: background-color 0.3s;
+    font-weight: 600;
+    /* Ya es expand="block" (ancho completo) desde el HTML */
 }
 
-.btn-enviar:hover {
-    background-color: #804D23;
-}
-
-/* Estilos para el rating */
+/* --- 4. Estilos de Rating (¡Estos se quedan igual!) --- */
+/* Dejaste esta clase en el HTML, así que este CSS funciona */
 .rating {
     display: flex;
     gap: 5px;
@@ -149,8 +114,41 @@
     color: #f1c40f;
 }
 
-/* Estilos adicionales para comentarios */
-.fecha {
+/* --- 5. Lista de Comentarios (Tus .comentario-card) --- */
+/* Apuntamos a <ion-card> */
+ion-card {
+    background: white;
+    /* Tu fondo de card */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 16px;
+    /* Espacio entre tarjetas */
+    color: #333;
+}
+
+/* (Tu .usuario-nombre) 
+   Apuntamos a <ion-card-title>
+*/
+ion-card-title {
+    font-weight: bold;
+    color: #B13BFF;
+    /* Tu color de nombre */
+    font-size: 1.2rem;
+}
+
+/* (Tu .comentario-texto) 
+   Apuntamos al <p> dentro de <ion-card-content>
+*/
+ion-card-content p {
+    line-height: 1.6;
+    color: #555;
+    font-size: 1rem;
+}
+
+/* (Tu .fecha) 
+   Apuntamos al <small> dentro de <ion-card-content>
+*/
+ion-card-content small {
     color: #7f8c8d;
     display: block;
     margin-top: 10px;

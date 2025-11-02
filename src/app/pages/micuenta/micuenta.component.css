@@ -1,211 +1,103 @@
-/* mi cuenta.component.css */
-:host {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: linear-gradient(135deg, #f3e8ff, #e0c3fc);
-    padding: 20px;
-    box-sizing: border-box;
+/* --- 1. Fondo de la Página (tu :host) --- */
+/* Aplicamos el gradiente al fondo del contenido */
+ion-content {
+    --background: linear-gradient(135deg, #f3e8ff, #e0c3fc);
     font-family: 'Segoe UI', Roboto, sans-serif;
 }
 
-/* Caja principal del perfil */
-.perfil-menu {
-    width: 320px;
-    background: #fff;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(80, 0, 120, 0.15);
-    padding: 24px 0;
-    overflow: hidden;
-    border: 1px solid #e6d8f5;
-    position: relative;
-    animation: fadeIn 0.4s ease forwards;
-}
-
-/* Contenedor interno */
-.micuenta-container {
-    background: #faf7ff;
-    border-radius: 24px;
-    padding: 36px 28px;
-    max-width: 550px;
-    margin: 0 auto;
-    box-shadow: 0 4px 18px rgba(80, 0, 120, 0.12);
-    border: 1px solid #e6d8f5;
-}
-
-/* Títulos */
-.micuenta-title {
-    color: #7b2cbf;
-    font-size: 22px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    letter-spacing: 0.5px;
-}
-
-.micuenta-separator {
-    border: none;
-    border-top: 3px solid #9d4edd;
-    margin-bottom: 20px;
-    width: 100%;
-}
-
-.micuenta-nombre {
+/* --- 2. Nombre de Usuario (tu .micuenta-nombre) --- */
+ion-content .ion-text-center h2 {
     font-size: 24px;
     font-weight: 600;
     color: #3c2a4d;
-    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 0;
 }
 
-/* Formulario */
-.micuenta-form {
+/* --- 3. Tarjeta de Datos (tu .micuenta-form) --- */
+/* Aplicamos tus estilos de tarjeta a la <ion-list> */
+ion-list {
     background: #f6f0fa;
+    /* Tu fondo de formulario */
     border-radius: 18px;
-    padding: 26px 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+    /* Tu borde redondeado */
+
+    /* Tus estilos de .micuenta-container */
+    max-width: 550px;
+    margin: 20px 16px;
+    /* Centrado y espaciado */
+    box-shadow: 0 4px 18px rgba(80, 0, 120, 0.12);
+    border: 1px solid #e6d8f5;
+    padding: 10px;
 }
 
-/* Campos */
-.micuenta-field label {
-    font-weight: 600;
-    color: #4a287a;
-    margin-bottom: 6px;
+/* --- 4. Título de la Lista (tu .micuenta-title) --- */
+ion-list-header h3 {
+    color: #7b2cbf;
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    padding-left: 6px;
+    margin-bottom: 10px;
+
+    /* Tu .micuenta-separator */
+    border-bottom: 3px solid #9d4edd;
+    padding-bottom: 10px;
 }
 
-.micuenta-field input {
-    padding: 12px 14px;
+/* --- 5. Campos de Datos (tu .micuenta-field) --- */
+/* Apuntamos a <ion-item> */
+ion-item {
+    /* Hacemos que los items sean transparentes para ver el fondo de la lista */
+    --background: transparent;
+
+    /* Tu borde .micuenta-field input */
     border: 2px solid #9d4edd;
     border-radius: 8px;
-    font-size: 16px;
-    background: #fff;
-    color: #3c2a4d;
-    transition: all 0.3s ease;
-}
+    margin-bottom: 16px;
 
-.micuenta-field input:focus {
-    border-color: #c77dff;
+    /* Tu sombra de focus */
+    --highlight-color-focused: #c77dff;
     box-shadow: 0 0 8px rgba(157, 78, 221, 0.4);
 }
 
-.micuenta-field input[readonly] {
-    background: #f2e6ff;
-    color: #3c2a4d;
-    cursor: not-allowed;
-}
-
-/* Header */
-.perfil-header {
-    padding: 0 20px 15px 20px;
-}
-
-.perfil-nombre {
-    font-size: 18px;
+/* (Tu .micuenta-field label) */
+ion-label {
     font-weight: 600;
-    color: #5c3b21;
-    display: block;
-    padding: 8px 0;
+    color: #4a287a;
+    font-size: 0.9rem;
+    margin-bottom: 2px;
 }
 
-hr {
-    border: none;
-    height: 1px;
-    background-color: #e6d8f5;
-    margin: 0 20px 10px 20px;
-}
-
-/* Opciones del menú */
-.perfil-opciones {
-    display: flex;
-    flex-direction: column;
-    padding: 0 10px;
-}
-
-.perfil-opcion {
-    padding: 14px 20px;
-    margin: 5px 0;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    color: #5a3472;
-    font-size: 15px;
-    font-weight: 500;
-    position: relative;
-}
-
-.perfil-opcion:hover {
-    background-color: #f3e8ff;
+/* (Tu input[readonly]) 
+   Estilamos la <ion-note> para que se vea como tu campo
+*/
+ion-note[slot="end"] {
     color: #3c2a4d;
-    transform: translateX(6px);
+    font-size: 1rem;
+    font-weight: 500;
+
+    /* Tus estilos de input[readonly] */
+    background: #f2e6ff;
+    padding: 8px 12px;
+    border-radius: 6px;
 }
 
-.perfil-opcion i {
-    margin-right: 12px;
-    width: 20px;
-    text-align: center;
-    color: #9d4edd;
-    font-size: 16px;
-}
+/* --- 6. Botón Cerrar Sesión (tu .cerrar-sesion) --- */
+/* Apuntamos al <ion-button> que tiene color="danger" */
+ion-button[color="danger"] {
+    --background: #d6336c;
+    /* Tu color de texto */
+    --color: white;
+    /* Texto blanco */
 
-/* Cerrar sesión */
-.cerrar-sesion {
-    margin-top: 12px;
-    color: #d6336c !important;
-    border-top: 1px solid #e6d8f5;
-    padding-top: 15px;
-}
+    --background-hover: #ffe6ef;
+    /* Tu fondo de hover */
+    --color-hover: #d6336c;
+    /* Color de texto en hover */
 
-.cerrar-sesion i {
-    color: #d6336c !important;
-}
-
-.cerrar-sesion:hover {
-    background-color: #ffe6ef !important;
-}
-
-/* Línea decorativa en hover */
-.perfil-opcion:hover::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    width: 3px;
-    height: 20px;
-    background-color: #9d4edd;
-    border-radius: 0 3px 3px 0;
-}
-
-/* Animación */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.perfil-opcion {
-    animation: fadeIn 0.3s ease forwards;
-}
-
-.perfil-opcion:nth-child(1) {
-    animation-delay: 0.1s;
-}
-
-.perfil-opcion:nth-child(2) {
-    animation-delay: 0.2s;
-}
-
-.perfil-opcion:nth-child(3) {
-    animation-delay: 0.3s;
-}
-
-.cerrar-sesion {
-    animation-delay: 0.4s;
+    --border-radius: 10px;
+    font-weight: 600;
+    font-size: 1rem;
+    margin: 10px;
 }

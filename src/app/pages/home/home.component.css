@@ -1,277 +1,181 @@
+/* 1. Importar la fuente que querías */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
-
-.home-root,
-body,
-.subtitle2,
-.bestsellers,
-.bestsellers-content,
-.bestsellers-text,
-.ver-mas {
+/* * 2. Anulación de Tema (¡MUY IMPORTANTE!)
+ * Forzamos un fondo blanco para anular el "modo oscuro" 
+ * automático de Ionic que viste en tu screenshot.
+*/
+ion-content {
+    --background: #ffffff;
     font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
 }
 
-.subtitle2 {
-    font-size: 2rem;
+/* * 3. Título principal (tu .subtitle2)
+ * Apuntamos al h2 que pusimos dentro del padding.
+*/
+.ion-padding h2 {
+    font-size: 1.8rem;
+    /* Un poco más pequeño para móviles */
     font-weight: 700;
     color: #804D23;
     text-align: center;
-    margin-top: 32px;
-    margin-bottom: 24px;
+    margin-top: 24px;
+    margin-bottom: 16px;
     letter-spacing: 1px;
 }
 
-.bestsellers {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #E2B8FF;
-    border-radius: 18px;
+/* * 4. Secciones (tu .bestsellers)
+ * Apuntamos a <ion-card> y usamos sus variables CSS.
+*/
+ion-card {
+    --background: #E2B8FF;
+    /* Tu fondo .bestsellers */
+    --border-radius: 18px;
+    /* Tu borde redondeado */
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
-    padding: 40px 0;
-    margin: 0 24px;
+    margin: 16px;
+    /* Espaciado para la app */
+    /* El padding lo maneja ion-card-content */
 }
 
-.bestsellers-content {
-    display: flex;
-    flex-direction: row;
-    gap: 40px;
-    align-items: center;
-    max-width: 900px;
-    width: 100%;
-}
-
-.bestsellers-text {
-    flex: 1;
-    padding: 0 24px;
-}
-
-.bestsellers-text h1 {
-    font-size: 2.2rem;
+/* * 5. Títulos de las tarjetas (tu .bestsellers-text h1)
+ * Apuntamos a <ion-card-title>
+*/
+ion-card-title {
+    font-size: 1.8rem;
+    /* 2.2rem es muy grande para móvil */
     color: rgb(128, 77, 35);
-    margin-bottom: 16px;
+    font-weight: 700;
 }
 
-.bestsellers-text p {
-    font-size: 1.1rem;
-    color: #333;
-    margin-bottom: 10px;
-}
-
-.ver-mas {
-    background: #B13BFF;
-    color: #E2B8FF;
-    border: none;
-    border-radius: 8px;
-    padding: 12px 32px;
+/* * 6. Texto de las tarjetas (tu .bestsellers-text p)
+ * Apuntamos al <p> dentro de <ion-card-content>
+*/
+ion-card-content p {
     font-size: 1rem;
+    /* 1.1rem es grande */
+    color: #333;
+}
+
+/* * 7. Botones (tu .ver-mas)
+ * Apuntamos a <ion-button>
+*/
+ion-button {
+    --background: #B13BFF;
+    /* Tu fondo .ver-mas */
+    --color: #E2B8FF;
+    /* Tu color de texto */
+    --border-radius: 8px;
+    /* Tu borde redondeado */
     font-weight: 600;
-    cursor: pointer;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    transition: background 0.2s, transform 0.2s;
+    font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
 }
 
-.ver-mas:hover {
-    background: #B13BFF;
-    transform: translateY(-2px) scale(1.04);
-}
-
-.lecturas:hover {
-    background: #B13BFF;
-    transform: translateY(-2px) scale(1.04);
-}
-
-/* Añade estos estilos a tu CSS */
-.book-features {
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 0 24px;
-}
-
-.genre-filters {
-    margin-bottom: 40px;
-    text-align: center;
-}
-
-.genre-filters h3 {
+/* * 8. Filtros de Género (tu .filter-btn)
+ * Apuntamos a <ion-segment> y <ion-segment-button>
+ * Esta es la forma "Ionic" de darles color.
+*/
+.ion-padding h3 {
     font-size: 1.5rem;
     color: #804D23;
+    text-align: center;
     margin-bottom: 16px;
     font-weight: 600;
 }
 
-.filter-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 12px;
-}
-
-.filter-btn {
-    background: #E2B8FF;
-    color: #333;
-    border: none;
-    border-radius: 20px;
-    padding: 8px 20px;
-    font-size: 0.9rem;
+ion-segment-button {
+    --color: #804D23;
+    /* Tu color de texto de 'h3' */
+    --color-checked: #B13BFF;
+    /* Tu color 'active' */
+    --indicator-color: #B13BFF;
+    /* Color de la línea de abajo */
     font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
 }
 
-.filter-btn.active,
-.filter-btn:hover {
-    background: #B13BFF;
-    color: white;
-    transform: translateY(-2px);
-}
-
-.featured-carousel {
-    margin-top: 50px;
-}
-
-.featured-carousel h3 {
-    font-size: 1.5rem;
-    color: #804D23;
-    text-align: center;
-    margin-bottom: 24px;
-    font-weight: 600;
-}
-
-.carousel-container {
+/* Carrusel personalizado (scroll horizontal) */
+.carousel-wrapper {
     position: relative;
-    max-width: 1000px;
-    margin: 0 auto;
-    overflow: hidden;
+    margin: 16px;
 }
 
 .carousel-track {
     display: flex;
-    transition: transform 0.5s ease;
-    gap: 20px;
-    padding: 10px 0;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 8px 4px;
+}
+
+.carousel-track::-webkit-scrollbar {
+    height: 10px;
+}
+
+.carousel-card {
+    --background: #ffffff;
+    --border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    min-width: 220px;
+    max-width: 320px;
+    width: 260px;
+    flex: 0 0 auto;
+}
+
+.carousel-card img {
+    width: 100%;
+    height: 360px;
+    object-fit: cover;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.carousel-card ion-card-title {
+    font-size: 1.05rem;
+    color: #804D23;
+    font-weight: 600;
+}
+
+.carousel-card ion-card-subtitle {
+    font-size: .9rem;
+    color: #8c6a4d;
+}
+
+.carousel-card ion-card-content {
+    color: #f1c40f;
+    font-weight: 600;
 }
 
 .carousel-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(178, 59, 255, 0.7);
-    color: white;
+    background: rgba(0, 0, 0, 0.06);
     border: none;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
     cursor: pointer;
-    z-index: 10;
-    transition: all 0.3s ease;
-}
-
-.carousel-btn:hover {
-    background: #B13BFF;
-    transform: translateY(-50%) scale(1.1);
 }
 
 .carousel-btn.prev {
-    left: 10px;
+    left: 4px;
 }
 
 .carousel-btn.next {
-    right: 10px;
+    right: 4px;
 }
 
-/* Estilo para las tarjetas del carrusel */
-
-.carousel-book {
-    min-width: 220px;
-    background: white;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 4px 16px rgba(178, 59, 255, 0.10);
-    transition: transform 0.3s, box-shadow 0.3s, max-height 0.4s;
-    position: relative;
-    max-height: 350px;
-    display: flex;
-    flex-direction: column;
-}
-
-.carousel-book:hover {
-    transform: translateY(-8px) scale(1.04);
-    box-shadow: 0 8px 24px rgba(178, 59, 255, 0.18);
-    max-height: 500px;
-}
-
-.carousel-book img {
-    width: 100%;
-    height: 240px;
-    object-fit: cover;
-    border-bottom: 1px solid #f0e6ff;
-}
-
-.book-info {
-    padding: 18px 14px 10px 14px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-}
-
-.book-info h4 {
-    font-size: 1.1rem;
-    color: #804D23;
-    margin-bottom: 6px;
-    font-weight: 600;
-}
-
-.book-info p {
-    font-size: 0.95rem;
-    color: #8c6a4d;
-    margin-bottom: 8px;
-}
-
-.book-rating {
-    color: #f1c40f;
-    font-size: 1rem;
-    font-weight: 600;
-}
-
-/* Sugerencia de funcionalidad extra: sinopsis expandible */
-.book-synopsis {
-    opacity: 0;
-    max-height: 0;
-    transition: opacity 0.3s, max-height 0.4s;
-    font-size: 0.95rem;
-    color: #333;
-    margin-top: 8px;
-    overflow: hidden;
-}
-
-.carousel-book:hover .book-synopsis {
-    opacity: 1;
-    max-height: 120px;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .filter-buttons {
-        gap: 8px;
+@media (max-width: 600px) {
+    .carousel-card {
+        width: 200px;
+        height: auto;
     }
 
-    .filter-btn {
-        padding: 6px 15px;
-        font-size: 0.8rem;
-    }
-
-    .carousel-book {
-        min-width: 180px;
-    }
-}
-
-@media (max-width: 480px) {
-    .carousel-btn {
-        width: 30px;
-        height: 30px;
-        font-size: 0.8rem;
+    .carousel-card img {
+        height: 260px;
     }
 }

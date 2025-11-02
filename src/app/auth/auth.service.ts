@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:3000/api/auth';
+  private apiUrl = `${environment.apiUrl}/auth`;
   private currentUserSubject = new BehaviorSubject<any>(null);
   public currentUser = this.currentUserSubject.asObservable();
 
@@ -50,9 +51,11 @@ export class AuthService {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     localStorage.setItem('token', token);
-    localStorage.setItem('user', JSON.stringify(user)); // SOLO el user
-    this.currentUserSubject.next(user);
-    console.log('Usuario guardado:', user);
+    // Ensure we're always storing the inner user object
+    const userToStore = user.user ? user.user : user;
+    localStorage.setItem('user', JSON.stringify(userToStore));
+    this.currentUserSubject.next(userToStore);
+    console.log('Usuario guardado:', userToStore);
   }
 
   getUserRole(): string {

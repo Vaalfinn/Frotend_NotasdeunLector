@@ -35,8 +35,8 @@ export class LoginComponent {
       this.authService.login(email, password).subscribe({
         next: (response) => {
           console.log('Login exitoso:', response);
-          // Guarda solo el usuario interno para que el rol se acceda correctamente
-          this.authService.saveSession(response.token, response.user.user);
+          // Pass the entire user object to saveSession
+          this.authService.saveSession(response.token, response.user);
           const userRole = this.authService.getUserRole();
           console.log('Rol del usuario:', userRole);
 
@@ -52,7 +52,12 @@ export class LoginComponent {
         },
         error: (error) => {
           console.error('Error de login:', error);
-          this.errorMessage = error?.error?.message || 'Error interno del servidor';
+          if (error?.error?.errors && error.error.errors.length > 0) {
+            // Handle validation errors
+            this.errorMessage = error.error.errors.map((err: any) => err.msg).join(', ');
+          } else {
+            this.errorMessage = error?.error?.message || 'Error interno del servidor';
+          }
         }
       });
     }

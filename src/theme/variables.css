@@ -1,0 +1,38 @@
+/*
+=============================================
+  Estilos Personalizados para el Menú Lateral
+=============================================
+*/
+
+/* Esto cambia el fondo del header del menú
+  (donde dice "NotasdeunLector") 
+*/
+ion-menu ion-header ion-toolbar {
+    /* Usamos el fondo morado claro de tus tarjetas */
+    --background: #E2B8FF;
+
+    /* Y un color de texto oscuro para que se lea */
+    --color: #9729ea;
+}
+
+/* Esto cambia el fondo principal del menú 
+  (donde están todos los enlaces) 
+*/
+ion-menu ion-content {
+    /* Un fondo blanco o gris muy claro se ve bien */
+    --background: #E2B8FF;
+}
+
+/* Esto cambia el color del TEXTO de cada enlace
+*/
+ion-menu ion-item {
+    /* Texto oscuro para los enlaces */
+    --color: #9729ea;
+}
+
+/* Estilo global para TODOS los headers de las páginas 
+*/
+ion-header ion-toolbar {
+    --background: #E2B8FF;
+    --color: #804D23;
+}
