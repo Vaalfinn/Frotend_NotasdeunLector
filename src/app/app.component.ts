@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
     } else {
       // If not authenticated and at root, send to login
       if (currentUrl === '/' || currentUrl === '') {
-        this.router.navigate(['/login']);
+        // this.router.navigate(['/login']);//
       }
     }
   }
